@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/astaxie/beego/server/web"
+	"github.com/beego/beego/v2/server/web"
 )
 
 func main() {
@@ -30,6 +30,7 @@ type MainController struct {
 }
 
 func (ctrl *MainController) DownloadFile() {
+
 	// The file LICENSE is under root path.
 	// and the downloaded file name is license.txt
 	ctrl.Ctx.Output.Download("LICENSE", "license.txt")

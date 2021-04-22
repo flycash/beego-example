@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/beego/beego/v2/server/web"
 	"net/http"
 
-	"github.com/astaxie/beego/server/web"
 )
 
 func main() {

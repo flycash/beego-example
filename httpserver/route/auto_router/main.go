@@ -1,4 +1,4 @@
-// Copyright 2020 beego-dev
+// Copyright 2021 beego
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,17 +18,15 @@ import (
 	"github.com/beego/beego/v2/server/web"
 )
 
-func main() {
-	// now you start the beego as http server.
-	// it will listen to port 8080
-	web.Run()
-
-	// it will listen to 8080
-	// beego.Run("localhost")
-
-	// it will listen to 8089
-	// beego.Run(":8089")
-
-	// it will listen to 8089
-	// beego.Run("127.0.0.1:8089")
+type UserController struct {
+	web.Controller
 }
+
+func (u *UserController) HelloWorld()  {
+	u.Ctx.WriteString("hello, world")
+}
+
+func main() {
+	web.AutoRouter(&UserController{})
+}
+

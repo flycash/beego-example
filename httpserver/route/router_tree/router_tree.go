@@ -1,4 +1,4 @@
-// Copyright 2020 beego-dev
+// Copyright 2021 beego
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,16 +15,24 @@
 package main
 
 import (
-	"github.com/astaxie/beego/client/httplib"
-	"github.com/astaxie/beego/core/logs"
+	"fmt"
+	"github.com/beego/beego/v2/server/web"
 )
 
+type UserController struct {
+	web.Controller
+}
+
+func (u *UserController) HelloWorld()  {
+	u.Ctx.WriteString("hello, world")
+}
+
 func main() {
-	resp, err := httplib.Get("http://beego.me/").Debug(true).Response()
-	if err != nil {
-		logs.Error(err)
-
+	//web.BConfig.RouterCaseSensitive = false
+	web.AutoRouter(&UserController{})
+	tree := web.PrintTree()
+	methods := tree["Data"].(web.M)
+	for k, v := range methods {
+		fmt.Printf("%s => %v\n", k, v)
 	}
-
-	logs.Info(resp)
 }

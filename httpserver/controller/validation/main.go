@@ -18,8 +18,8 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/astaxie/beego/core/validation"
-	"github.com/astaxie/beego/server/web"
+	"github.com/beego/beego/v2/core/validation"
+	"github.com/beego/beego/v2/server/web"
 )
 
 func main() {
