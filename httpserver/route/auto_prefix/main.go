@@ -1,4 +1,4 @@
-// Copyright 2021 beego
+// Copyright 2020 
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,13 +22,14 @@ type UserController struct {
 	web.Controller
 }
 
-func (u *UserController) HelloWorld()  {
-	u.Ctx.WriteString("hello, world")
+func (u *UserController) HelloWorld() {
+	u.Ctx.WriteString("Hello, world")
 }
 
 func main() {
-	// get http://127.0.0.1:8080/user/helloworld
-	web.AutoRouter(&UserController{})
+	// get http://localhost:8080/api/user/helloworld
+	// you will see return "Hello, world"
+	ctrl := &UserController{}
+	web.AutoPrefix("api", ctrl)
 	web.Run()
 }
-
